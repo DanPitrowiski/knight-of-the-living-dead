@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="They're coming to get you, Barbara! No they really are. Run!!!">
+	<meta name="keywords" content="Knight, Undead, RPG">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="images/favicons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+
+
+	<title>The Knight of the Living Dead</title>
+
+
+	<!-- external CSS link -->
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+
+	<!-- Google Analytics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-77792912-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+</head>
+<body>
+
+<!-- 		<h1 class="game-name">Knight of the Living Dead</h1> -->
+
+	<div class="light-game-bg" id="game-container">
+
+		<!-- /******************************************
+		/* ALL IN GAME MESSAGING
+		/*******************************************/  -->
+
+		<div class="game-alerts"></div>
+		<div id="nextEnemy"></div>
+		<button class="alert-button enemyturn">Enemy Turn</button>
+
+		<!-- /******************************************
+		/* SOUND
+		/*******************************************/  -->
+
+
+		<audio loop id="zombiemusic">
+		  <source loop id="zombiemusic" src="sound/KofLDmusic2.mp3" type="audio/mpeg">
+		</audio>
+
+		<audio loop id="epicmusic">
+		  <source loop src="sound/epicmusic.mp3" type="audio/mpeg">
+		</audio>
+
+		<audio loop id="deathbringer-music">
+		  <source loop src="sound/deathbringer-music.mp3" type="audio/mpeg">
+		</audio>
+
+		<audio loop id="rainambience">
+		  <source loop id="rainambience" src="sound/RainAmbience.mp3" type="audio/mpeg">
+		</audio>
+
+		<audio loop id="wind">
+		  <source loop id="rainambience" src="sound/wind.mp3" type="audio/mpeg">
+		</audio>
+
+		<audio loop id="thunderandrain">
+		  <source loop id="rainambience" src="sound/thunderandrain.mp3" type="audio/mpeg">
+		</audio>
+
+		<audio id="enemyhit">
+		  <source src="sound/MetalHeavyBashFlesh3.mp3" type="audio/mpeg">
+		</audio>
+
+		<audio id="herohit">
+		  <source src="sound/MetalMediumChopMetal1.mp3" type="audio/mpeg">
+		</audio>
+
+		<audio id="weaponmiss">
+		  <source src="sound/weapon-miss.mp3" type="audio/mpeg">
+		</audio>
+
+		<audio id="zombieBob-entrance">
+			<source class="entrance" src="sound/zombie-rising.mp3" type="audio/mpeg">
+		</audio>
+
+		<audio id="mountainGiant-entrance">
+			<source class="entrance" src="sound/EnterMountainGiant.wav" type="audio/mpeg">
+		</audio>
+
+		<audio id="ogre-entrance">
+			<source class="entrance" src="sound/ogre-enter.ogg" type="audio/mpeg">
+		</audio>
+
+		<audio id="berserker-entrance">
+			<source class="entrance" src="sound/berserker.wav" type="audio/mpeg">
+		</audio>
+
+		<audio id="castleGuard-entrance">
+			<source class="entrance" src="sound/castle-guard-enter.ogg" type="audio/mpeg">
+		</audio>
+
+		<audio id="dungeonGuard-entrance">
+			<source class="entrance" src="sound/dungeonGuard-enter.ogg" type="audio/mpeg">
+		</audio>
+
+		<audio id="dragon-entrance">
+			<source class="entrance" src="sound/dragon-enter.ogg" type="audio/mpeg">
+		</audio>
+
+		<audio id="dragon-entrance2"
+				<source class="entrance" src="sound/dragon-enter2.ogg" type="audio/mpeg">
+		</audio>
+
+		<audio id="theking-entrance">
+			<source class="entrance" src="sound/theking-enter.ogg" type="audio/mpeg">
+		</audio>
+
+		<audio id="skillactivated">
+			<source class="entrance" src="sound/skillactivated.mp3" type="audio/mpeg">
+		</audio>
+
+		<audio id="itemrestore">
+			<source class="entrance" src="sound/ItemRestore.wav" type="audio/mpeg">
+		</audio>
+
+		<audio id="resurrected">
+			<source class="entrance" src="sound/resurrected.wav" type="audio/mpeg">
+		</audio>
+
+
+		<!-- /******************************************
+		/* BOTTOM GAME MENU AND CHARACTERS
+		/*******************************************/  -->
+
+		<div id="hero-stats" class="ground-menu">
+			<p class="ch-name"><span class="bold-stat">Farva</span> - lvl <span id="hero-level">5</span></p>
+			<div class="ch-hitpoints"><span class="bold-stat">HP: </span><span id="hero-health"></span>
+			</div>
+			<div class="ch-skillpoints"><span class="bold-stat">SP: </span><span id="hero-skillpoints"></span>
+			</div>
+		</div>
+
+		<!-- FIGHT MENU	 -->
+
+		<div id="fight-menu" class="ground-menu">
+			<button class="attack-f fight-button">ATTACK</button>
+			<button class="skill-f fight-button">SKILLS<img class="arrow-image" src="images/arrow.png"></button>
+			<button class="item-f fight-button">ITEMS<img class="arrow-image" src="images/arrow.png"></button>
+		</div>
+
+		<!-- SKILLS MENU -->
+
+		<div id="skills-menu" class="ground-menu">
+			<div id="finishhim" class="skill-button">
+				Finish Him - 4SP<br><span class="skills-desc"> +10 dmg 6 turns</span>
+			</div>
+			<div id="lightonyourfeet" class="skill-button">
+				Light on your feet - 3SP<br><span class="skills-desc">+30% dodge 10 turns</span>
+			</div>
+			<div id="armorup" class="skill-button">
+				Armor Up - 5SP<br><span class="skills-desc">+4 armor for 10 turns</span>
+			</div>
+			<div id="keeneye" class="skill-button">
+				Keen Eye with Accuracy - 2SP<br><span class="skills-desc">+15 accuracy for 10 turns</span>
+			</div>
+			<div id="execute" class="skill-button">
+				Execute an enemy - 3SP<br><span class="skills-desc">+30 damage for 3 turns</span>
+			</div>
+			<div id="morepotions" class="skill-button">
+				Brew Potions - 6SP<br><span class="skills-desc">2 Skill and Health potions</span>
+			</div>
+			<div id="extralife" class="skill-button">
+				Extra Life - 4SP<br><span class="skills-desc">+30 hitpoints for 10 turns</span>
+			</div>
+		</div>
+
+		<!-- ITEMS MENU -->
+
+		<div id="items-menu" class="ground-menu">
+			<div id="healthpotion" class="item-button">
+			Health Potion - <span class="editHealthPotion">10</span> left<br><span class="skills-desc">Regain full hitpoints</span>
+			</div>
+			<div id="skillspotion" class="item-button">
+			Skill Rejuvenation - <span class="editSkillPotion">8</span> left<br><span class="skills-desc">Regain full skillpoints</span>
+			</div>
+		</div>
+
+		<!-- ENEMY MENU -->
+
+		<div id="enemyone" class="ground-menu">
+			<p class="ch-name"><span id="enemyone-name" class="boldstate">Farmer Zombie Bob</span> - lvl <span id="enemyone-level">3</span></p>
+			<div class="ch-hitpoints"><span class="bold-stat">HP: </span><span id="enemyone-health">12/14</span></div>
+			<div class="ch-skillpoints"></div>
+		</div>
+		<div id="enemytwo" class="ground-menu"></div>
+		<div id="enemythree" class="ground-menu"></div>
+		<div id="enemyfour" class="ground-menu"></div>
+
+		<!-- ENEMIES LEFT TO KILL -->
+
+		<h3 class="enemiescount">Enemies left before the King: <span class="editEnemiesCounter">5</span><h3>
+
+		<!-- MESSAGE HISTORY -->
+
+		<div id="div-history" class="history ground-menu">
+			<p class="message"><br>Find a history of your battle notifications here.</p>
+		</div>
+
+		<!-- /******************************************
+		/* BACKGROUND GRAPHICS
+		/*******************************************/  -->
+		<canvas id="rain"> </canvas>
+		<canvas id="thunder"> </canvas>
+		<img class="trees" src="images/trees.png">
+		<img class="corn-field" src="images/corn-field.png">
+		<img class="mountain-image" src="images/mountains.png">
+		<img class="mountain-image2" src="images/mountains.png">
+		<div class="clouds">
+			<marquee behavior="scroll" direction="left" scrollamount="1" class="cloud-image"><img src="images/cloud.png"></marquee>
+			<marquee behavior="scroll" direction="left" scrollamount="2.2" class="cloud-image2"><img src="images/cloud.png"></marquee>
+			<marquee behavior="scroll" direction="left" scrollamount="2.5" class="large-grey-cloud"><img src="images/large-grey-cloud.png"></marquee>
+			<marquee behavior="scroll" direction="left" scrollamount="2" class="large-grey-cloud2"><img src="images/large-grey-cloud.png"></marquee>
+			<marquee behavior="scroll" direction="left" scrollamount="1.8" class="large-grey-cloud3"><img src="images/large-grey-cloud.png"></marquee>
+			<marquee behavior="scroll" direction="left" scrollamount="2.4" class="large-grey-cloud4"><img src="images/large-grey-cloud.png"></marquee>
+			<marquee behavior="scroll" direction="left" scrollamount="3" class="large-grey-cloud5"><img src="images/large-grey-cloud.png"></marquee>
+			<marquee behavior="scroll" direction="right" scrollamount="3" class="deathbringer-bg flying"><img src="images/deathbringer-bg.png"></marquee>
+		</div>
+
+		<!--******************************************
+		/	HERO CHARACTER GRAPHICS AND STATS
+		/********************************************* -->
+
+
+		<p class="hero-stats"></p>
+		<div id="hero-ui">
+			<img src="images/hero.png">
+		</div>
+
+		<!-- /******************************************
+		/* ENEMY CHARACTER GRAPHICS
+		/*******************************************/  -->
+
+		<p class="enemy-stats"></p>
+		<div id="enemy-ui-one">
+			<img id="zombieBob" class="enemies" src="images/zombie-farmer.png">
+		</div>
+
+	</div>
+
+	<!--******************************************
+	/* FULL SCREEN POPOVER
+	/*******************************************-->
+
+	<div id="popover" class="popover-bg popover-bg-dark">
+
+		<form id='entry'>
+			<h1>Knight of the Living Dead</h1>
+			<img src='images/hero.png'>
+			<h3>Choose the name of your hero</h3>
+			<input type='text' id='hero-name' placeholder='Choose a hero name...'>
+			<input type='submit' value='Update' id='submit-btn'>
+		</form>
+
+		<div id="objective">
+			<h1>When the dead rise, kings will fall</h1>
+			<p>Time to take the throne from the mortal King. Battle his minions on your way to the final confrontation. If you die, he wins. Survive!</p>
+
+			<div class="light-on-dark-divider"></div>
+
+			<div class="objective-skill center">
+				<img class="intro-icon" src="images/icons/attack.png">
+				<p class="intro-text"><strong>DAMAGE</strong> is determined randomly from your weapon's damage range.</p>
+			</div>
+
+			<div class="objective-skill center">
+				<img class="intro-icon" src="images/icons/armor.png">
+				<p class="intro-text"><strong>ARMOR</strong> negates this much damage from every hit.</p>
+			</div>
+
+			<div class="objective-skill center">
+				<img class="intro-icon" src="images/icons/accuracy.png">
+				<p class="intro-text"><strong>ACCURACY</strong> is the % chance you’ll hit.</p>
+			</div>
+
+			<div class="objective-skill center">
+				<img class="intro-icon" src="images/icons/skills.png">
+				<p class="intro-text"><strong>SKILLS</strong> are abilities you can activate during battle.</p>
+			</div>
+
+			<div class="objective-skill center">
+				<img class="intro-icon" src="images/icons/dodge.png">
+				<p class="intro-text"><strong>DODGE</strong> is the % chance you’ll dodge a hit.</p>
+			</div>
+
+			<button class="next-choose-adj">Choose Your Level 1 Perk→</button>
+		</div>
+
+		<div id="level-up">
+			<h1>Level <span class="insert-lvl">1</span> Perk (choose one)</h1>
+			<h2>You've also gained <span class="editHitPoints"></span> hitpoints and <span class="editSkillPoints"></span> skillpoints.</h2>
+		</div>
+
+		<div id="death">
+			<img class="center" src='images/hero.png'>
+			<h2 class="death-text">You've died!</h2>
+			<button class="reload center">One Last Chance!</button>
+		</div>
+
+		<div id="winner">
+			<img class="center" src='images/hero.png'>
+			<h2>You've won - King <span class="editHeroName"></span>!</h2>
+			<p class="winnertext">Taking the thrown in only <span class="turnTotal"></span> turns.<p>
+			<br>
+			<h2 class="top10title">Top 10 Fastest Playthroughs</h2>
+			<table id="leaderboardTable">
+				<tr>
+				<th class="playerTitleTable">Player</th>
+				<th class="scoreTitleTable">Score</th>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+
+	<!-- /******************************************
+	/* GAME NAME
+	/*******************************************/  -->
+
+	<h3 class="game-name">Knight of the Living Dead dreamed up by <a target="_blank" href="https://danpitrowiski.github.io/fewd-40/portfolio-site/index.html">Dan Pitrowiski</a></h3>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="js/leaderboard.js"></script>
+	<script src="js/updateGameBG.js"></script>
+	<script src="js/levelup.js"></script>
+	<script src="js/items.js"></script>
+	<script src="js/skills.js"></script>
+	<script src="js/characters.js"></script>
+	<script src="js/hover.js"></script>
+	<script src="js/javascript.js"></script>
+
+
+</body>
+</html>
