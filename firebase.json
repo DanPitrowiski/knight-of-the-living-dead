@@ -1,6 +1,6 @@
 {
   "firebase": "knightofthelivingdead",
-  "public": "knight-of-the-living-dead",
+  "public": ".",
   "ignore": [
     "firebase.json",
     "**/.*",
