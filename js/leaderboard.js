@@ -1,7 +1,7 @@
 var LEADERBOARD_SIZE = 10;
 
 // Create our Firebase reference
-var scoreListRef = new Firebase('https://blazing-fire-8790.firebaseio.com/highscores');
+var scoreListRef = new Firebase('https://knightofthelivingdead.firebaseio.com/highscores');
 
 // Keep a mapping of firebase locations to HTML elements, so we can move / remove elements as necessary.
 var htmlForPath = {};

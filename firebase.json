@@ -1,0 +1,9 @@
+{
+  "firebase": "knightofthelivingdead",
+  "public": "knight-of-the-living-dead",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
