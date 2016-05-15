@@ -1,13 +1,9 @@
 {
   "firebase": "knightofthelivingdead",
-  "public": "index.html",
+  "public": "knight-of-the-living-dead",
   "ignore": [
     "firebase.json",
     "**/.*",
     "**/node_modules/**"
-  ],
-  "rewrites": [ {
-  "source": "**",
-  "destination": "index.html"
-  } ]
+  ]
 }
