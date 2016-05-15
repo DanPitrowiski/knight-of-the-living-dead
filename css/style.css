@@ -630,6 +630,10 @@ button {
 /* POPOVERS
 /*******************************************/
 
+#thanks-text {
+  display: none;
+}
+
 #leaderboardTable {
   margin: 0px auto;;
 }

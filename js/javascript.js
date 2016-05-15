@@ -9,6 +9,12 @@
 
  var myFirebaseRef = new Firebase('https://blazing-fire-8790.firebaseio.com/');
 
+// THANKS TOGGLE TEXT
+
+$('#thanks').on('click', function(event){
+	event.preventDefault();
+	$('#thanks-text').toggle();
+});
 
 
 // ******************************************
@@ -45,16 +51,6 @@ $('.next-choose-adj').click( function(){
 
 });
 
-
-
-
-// function loadGame(){
-//  	// $( "#popover" ).css('background-color','rgba(0,0,0,0)');
-//  	$( "#hero-stats>.ch-name>.bold-stat").text(hero.name);
-
-//     alertMessage(currentEnemies[0].name + " won't let you pass. Time for a fight!", null, false);
-
-// };
 
 // ******************************************
 // * MENU
