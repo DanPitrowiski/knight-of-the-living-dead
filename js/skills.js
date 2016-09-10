@@ -92,7 +92,7 @@ var skillList = ["finishhim","lightonyourfeet","armorup","keeneye","execute","ex
 		turnsCount: 0,
 		uid: "morepotions",
 		heroOwns: false,
-		effectDescription: "2 Skill & Health potions",
+		effectDescription: "+2 Skill & Health potions",
 		adjHero: function (){
 			hero.healthpotion += 2;
 			hero.skillspotion += 2;} ,
