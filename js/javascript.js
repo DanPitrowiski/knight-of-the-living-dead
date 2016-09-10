@@ -27,6 +27,11 @@ $('#thanks').on('click', function(event){
   	setFightInfo();
   });
 
+ var count = skillList.length;
+ for (var i=0; i < count; i++){
+ 	$('.'+skillList[i]).prepend(skillList[i].effectDescription);
+ }
+
 $('#entry').on('submit', function(e){
 	$('#hero-name').blur();
 	var name = $( '#hero-name' ).val();

@@ -8,11 +8,11 @@ var skillList = ["finishhim","lightonyourfeet","armorup","keeneye","execute","ex
 		name: "Finish Him",
 		statAdj: 10,
 		skillpointCost: 4,
-		turns: 6,
+		turns: 7,
 		turnsCount: 0,
 		uid: "finishhim",
 		heroOwns: true,
-		effectDescription: "+10 dmg 6 turns",
+		effectDescription: "+10 dmg 7 turns",
 		adjHero: function (){
 			hero.weapon[1] += finishhim.statAdj;
 			console.log("Working finish him");
