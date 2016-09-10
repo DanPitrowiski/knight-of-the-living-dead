@@ -27,9 +27,11 @@ $('#thanks').on('click', function(event){
   	setFightInfo();
   });
 
+ // Adding Skill Names Dynamically
  var count = skillList.length;
  for (var i=0; i < count; i++){
- 	$('.'+skillList[i]).prepend(skillList[i].effectDescription);
+ 	$('#'+skillList[i]).prepend((eval(skillList[i]).name)+" "+(eval(skillList[i]).skillpointCost)+"SP");
+ 	$('.'+skillList[i]).prepend(eval(skillList[i]).effectDescription);
  }
 
 $('#entry').on('submit', function(e){
