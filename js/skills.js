@@ -2,7 +2,7 @@
 // * SKILLS LIST
 // ******************************************
 
-var skillList = ["finishhim","lightonyourfeet","armorup","keeneye","execute","extralife","morepotions"];
+var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup","keeneye","execute","extralife","morepotions"];
 
 	var finishhim = {
 		name: "Finish Him",
@@ -117,6 +117,48 @@ var skillList = ["finishhim","lightonyourfeet","armorup","keeneye","execute","ex
 				hero.hitPointsCurrent = hero.hitPoints;}
 			},
 	};
+
+	var misfortune = {
+		name: "Misfortune",
+		statAdj: 0,
+		skillpointCost: 2,
+		turns: 8,
+		turnsCount: 0,
+		uid: "misfortune",
+		heroOwns: false,
+		effectDescription: "Enemy dodge at 0% for 8 turns",
+		adjHero: function (){
+			misfortune.statAdj = currentEnemies[0].dodge;
+			currentEnemies[0].dodge = 0;} ,
+		negHero: function (){
+			currentEnemies[0].dodge = misfortune.statAdj;
+			},
+	};
+
+	var berserk = {
+		name: "Berserk",
+		statAdj: 0,
+		skillpointCost: 5,
+		turns: 15,
+		turnsCount: 0,
+		uid: "berserk",
+		heroOwns: true,
+		effectDescription: "Everytime you're hit, you deal +3 more dmg (effects last 15 turns)",
+		adjHero: function (){
+			if (berserk.statAdj > 0){
+				hero.weapon[1] += 3;
+				hero.weapon[2] += 3;
+				setCharacterStats();
+			}
+			berserk.statAdj +=1;
+		},
+		negHero: function (){
+			hero.weapon[1] -= ((berserk.statAdj-1) * 3);
+			hero.weapon[2] -= ((berserk.statAdj-1) * 3);
+			berserk.statAdj = 0;
+		},
+	};
+
 
 
 // ******************************************

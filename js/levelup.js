@@ -53,13 +53,13 @@ var levelUpOptions = ['attackLevel', 'armorLevel','skillsLevel','dodgeLevel','ac
 	}
 
 	var skillsLevel = {
-	level1: 'armorup',
-	level2: 'finishhim',
+	level1: 'misfortune',
+	level2: 'armorup',
 	level3: 'extralife',
-	level4: 'morepotions',
-	level5: 'lightonyourfeet',
-	level6: 'execute',
-	level7: '',
+	level4: 'finishhim',
+	level5: 'morepotions',
+	level6: 'lightonyourfeet',
+	level7: 'execute',
 	level8: '',
 	level9: '',
 	nextLevel: ["level1", 1],

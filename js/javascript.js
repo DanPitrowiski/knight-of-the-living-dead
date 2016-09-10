@@ -6,7 +6,8 @@
  var skipEnemy;
  var deathCount = 0; //Only one continue
  var totalTurns = 0;
-
+ var hit;
+ var berserkHit = false;
  var myFirebaseRef = new Firebase('https://blazing-fire-8790.firebaseio.com/');
 
 // THANKS TOGGLE TEXT
@@ -27,10 +28,10 @@ $('#thanks').on('click', function(event){
   	setFightInfo();
   });
 
- // Adding Skill Names Dynamically
+ // Adding skill content dynamically when game starts
  var count = skillList.length;
  for (var i=0; i < count; i++){
- 	$('#'+skillList[i]).prepend((eval(skillList[i]).name)+" "+(eval(skillList[i]).skillpointCost)+"SP");
+ 	$('#'+skillList[i]).prepend((eval(skillList[i]).name)+" - "+(eval(skillList[i]).skillpointCost)+"SP");
  	$('.'+skillList[i]).prepend(eval(skillList[i]).effectDescription);
  }
 
@@ -128,6 +129,7 @@ function heroAttack(){
 
 		setTimeout(function(){
 		alertMessage(message, null, false);
+
 	 	if ( hit === true){ playHeroHit(); } else { playWeaponMiss(); }
 			$('.fight-button').removeClass('turnoffbuttons');
 			$('.item-button').removeClass('turnoffbuttons');
@@ -162,11 +164,16 @@ function enemyAttack(){
 
 	setTimeout(function(){
 		alertMessage(message, null, false);
-	 	if ( hit === true){ playHeroHit(); } else { playWeaponMiss(); }
+	 	if ( hit === true){
+	 		playHeroHit();
+		}
+	 	else { playWeaponMiss();
+	 	}
 			skillsSet();
 			endTurn();
 			setFightInfo();
 	},300);
+
 };
 
 // ******************************************
@@ -183,8 +190,12 @@ function hitting(attacker, defender){
 		if ( dodgeChance <= defender.dodge){
 			return "dodge";
 		}
+		if (berserk.turnsCount >= 1 && attacker === currentEnemies[0]){
+			berserk.adjHero();
+			console.log("Berserk should work");
+			berserkHit = true;
+		}
 		return true;
-		// damage(attacker, defender);
 	}
 	else {
 		return false;
@@ -238,7 +249,8 @@ console.log("Attacker: "+attacker.name+"   Defender:"+defender.name+" and hit "+
 	}
 	else {
 		$(attacker["ui_id"]).addClass("enemy-attacking movetofront");
-	  	if ( hit === "dodge"  ){
+
+	  	if ( hit === "dodge" ){
 			$(defender["ui_id"]).addClass("hero-dodge");
 		}
 	  	setTimeout( function(){
@@ -256,6 +268,10 @@ function endTurn(){
 	console.log("endTurn what is playerTurn="+playerTurn)
 	if (playerTurn === false) { playerTurn = true; }
 	else if (playerTurn === true) { playerTurn = false;}
+	if (berserkHit == true){
+ 		alertMessage("Berserk adds 3 damage to your attacks (" + ((berserk.statAdj-1) * 3) + " total)");
+ 		berserkHit = false;
+	}
 }
 
 // ******************************************
@@ -287,8 +303,9 @@ function historyScroll() {
 
 function createHitMessage(attacker, defender, hit){
 	if (hit === true){
-	var dmgReceived = damage(attacker,defender);
-	message = ( attacker.name + " hit " + defender.name +" dealing " + dmgReceived + " damage.");
+		var dmgReceived = damage(attacker,defender);
+		message = ( attacker.name + " hit " + defender.name +" dealing " + dmgReceived + " damage.");
+
  	} if (hit === false){
  		message = ( attacker.name + " missed " + defender.name );
  	} if (hit === "dodge") {
@@ -362,30 +379,16 @@ function winner(){
 	$('#winner').addClass('popover-bg');
 	$('.game-name').css('padding','100px 0');
 
-	// SET WINNERS WINNING INFO
-	 // myFirebaseRef.push({
- 	// 	highscores: {
-  // 			user: hero.name,
-  // 			totalTurns: totalTurns,
-  // 		}
-	 // });
-
-	 newScore();
-
-	// var myHighScores = new Firebase('https://blazing-fire-8790.firebaseio.com/highscores');
-
-	// myHighScores.orderByValue().on("value", function(snapshot) {
-	// 		// console.log(snapshot);
- //  		snapshot.forEach(function(data) {
- //  			console.log("Date.key() is " + data.key() + " AND data.val() is " + data.val());
- //    		// console.log(highscores.user() + " completed the game in " + highscores.totalTurns() + " turns.");
- //    		console.log(data);
- //  		});
-	// });
+	newScore();
 
 };
 
 function enemyKilled(defender){
+	if(misfortune.turnsCount > 0){
+		misfortune.negHero();
+		$('#misfortune').css('display','inherit');
+		misfortune.turnsCount = 0;
+	};
 	$('#enemy-ui-one').fadeOut(2000);
 	$('#enemyone').fadeOut(3000);
 	$('#items-menu').hide();
@@ -396,7 +399,6 @@ function enemyKilled(defender){
 	$('#nextEnemy').html('<button class="nextEnemy">Ready For Next Enemy?</button>');
 	$( "#nextEnemy" ).show();
 	$(".nextEnemy").css('display','inherit');
-
 	updateGameBG();
 }
 
