@@ -136,7 +136,7 @@ var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup",
 	};
 
 	var berserk = {
-		name: "Berserk",
+		name: "Enrage",
 		statAdj: 0,
 		skillpointCost: 5,
 		turns: 15,

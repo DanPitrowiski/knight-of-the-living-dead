@@ -269,7 +269,7 @@ function endTurn(){
 	if (playerTurn === false) { playerTurn = true; }
 	else if (playerTurn === true) { playerTurn = false;}
 	if (berserkHit == true){
- 		alertMessage("Berserk adds 3 damage to your attacks (" + ((berserk.statAdj-1) * 3) + " total)");
+ 		alertMessage("Enrage adds 3 damage to your attacks (" + ((berserk.statAdj-1) * 3) + " total)");
  		berserkHit = false;
 	}
 }
