@@ -150,9 +150,17 @@
 
 		<div id="hero-stats" class="ground-menu">
 			<p class="ch-name"><span class="bold-stat">Farva</span> - lvl <span id="hero-level">5</span></p>
-			<div class="ch-hitpoints"><span class="bold-stat">HP: </span><span id="hero-health"></span>
-			</div>
-			<div class="ch-skillpoints"><span class="bold-stat">SP: </span><span id="hero-skillpoints"></span>
+			<div class="stat-bars">
+				<div class="ch-hitpoints">
+					<span class="bold-stat">HP: <span id="hero-health"></span></span>
+					<div class="ch-hitpoints-current"></div>
+					<div class="ch-hitpoints-max"></div>
+				</div>
+				<div class="ch-skillpoints">
+					<span class="bold-stat">Mana: <span id="hero-skillpoints"></span></span>
+					<div class="ch-skillpoints-current"></div>
+					<div class="ch-skillpoints-max"></div>
+				</div>
 			</div>
 		</div>
 
@@ -203,7 +211,7 @@
 			Health Potion - <span class="editHealthPotion">10</span> left<br><span class="skills-desc">Regain full hitpoints</span>
 			</div>
 			<div id="skillspotion" class="item-button">
-			Skill Rejuvenation - <span class="editSkillPotion">8</span> left<br><span class="skills-desc">Regain full skillpoints</span>
+			Mana Rejuvenation - <span class="editSkillPotion">8</span> left<br><span class="skills-desc">Regain full mana</span>
 			</div>
 		</div>
 
@@ -211,8 +219,14 @@
 
 		<div id="enemyone" class="ground-menu">
 			<p class="ch-name"><span id="enemyone-name" class="boldstate">Farmer Zombie Bob</span> - lvl <span id="enemyone-level">3</span></p>
-			<div class="ch-hitpoints"><span class="bold-stat">HP: </span><span id="enemyone-health">12/14</span></div>
-			<div class="ch-skillpoints"></div>
+			<div class="stat-bars">
+				<div class="ch-hitpoints">
+					<span class="bold-stat">HP: <span id="enemyone-health">12/14</span></span>
+					<div class="enemy-hitpoints-current"></div>
+					<div class="enemy-hitpoints-max"></div>
+				</div>
+				<div class="ch-skillpoints"></div>
+			</div>
 		</div>
 		<div id="enemytwo" class="ground-menu"></div>
 		<div id="enemythree" class="ground-menu"></div>
@@ -245,7 +259,7 @@
 			<marquee behavior="scroll" direction="left" scrollamount="1.8" class="large-grey-cloud3"><img src="images/large-grey-cloud.png"></marquee>
 			<marquee behavior="scroll" direction="left" scrollamount="2.4" class="large-grey-cloud4"><img src="images/large-grey-cloud.png"></marquee>
 			<marquee behavior="scroll" direction="left" scrollamount="3" class="large-grey-cloud5"><img src="images/large-grey-cloud.png"></marquee>
-			<marquee behavior="scroll" direction="right" scrollamount="3" class="deathbringer-bg flying"><img src="images/deathbringer-bg.png"></marquee>
+			<div class="deathbringer-bg flying marquee"><img src="images/deathbringer-bg.png"></div>
 		</div>
 
 		<!--******************************************
@@ -319,7 +333,7 @@
 
 		<div id="level-up">
 			<h1>Level <span class="insert-lvl">1</span> Perk (choose one)</h1>
-			<h2>You've also gained <span class="editHitPoints"></span> hitpoints and <span class="editSkillPoints"></span> skillpoints.</h2>
+			<h2>You've also gained <span class="editHitPoints"></span> hitpoints and <span class="editSkillPoints"></span> mana points.</h2>
 		</div>
 
 		<div id="death">

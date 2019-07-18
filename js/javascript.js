@@ -31,7 +31,7 @@ $('#thanks').on('click', function(event){
  // Adding skill content dynamically when game starts
  var count = skillList.length;
  for (var i=0; i < count; i++){
- 	$('#'+skillList[i]).prepend((eval(skillList[i]).name)+" - "+(eval(skillList[i]).skillpointCost)+"SP");
+ 	$('#'+skillList[i]).prepend((eval(skillList[i]).name)+" - "+(eval(skillList[i]).skillpointCost)+" mana");
  	$('.'+skillList[i]).prepend(eval(skillList[i]).effectDescription);
  }
 
@@ -340,13 +340,22 @@ function setFightInfo(){
 
 function setCharacterStats(){
 	var enemyhealth = (currentEnemies[0].hitPointsCurrent + "/" + currentEnemies[0].hitPoints);
+	var enemyhealthbar = (currentEnemies[0].hitPointsCurrent/currentEnemies[0].hitPoints) * $(".enemy-hitpoints-max").width();
+	enemyhealthbar = parseInt(enemyhealthbar);
 	var herohealth = (hero.hitPointsCurrent + "/" + hero.hitPoints);
 	var heroskillpoints = (hero.skillPointsCurrent + "/" + hero.skillPoints);
+	var healthbarlength = (hero.hitPointsCurrent/hero.hitPoints) * $(".ch-hitpoints-max").width();
+	healthbarlength = parseInt(healthbarlength);
+	var skillbarlength = (hero.skillPointsCurrent/hero.skillPoints) * $(".ch-skillpoints-max").width();
+	skillbarlength = parseInt(skillbarlength);
 
 	$( '.game-alerts' ).promise().done(function(){
 		$( "#enemyone-health").text(enemyhealth);
 		$( "#hero-health").text(herohealth);
 		$( '#hero-skillpoints').text(heroskillpoints);
+		$('.ch-skillpoints-current').animate({"width": skillbarlength}, 300 );
+		$('.ch-hitpoints-current').animate({"width": healthbarlength}, 300 );
+		$('.enemy-hitpoints-current').animate({"width":enemyhealthbar}, 300);
 		$( "#hero-level").text(hero.level);
 		$('.editHealthPotion').html(hero.healthpotion);
 		$('.editSkillPotion').html(hero.skillspotion);
@@ -507,7 +516,7 @@ function playDeathBringerMusic() { deathbringerMusic.play(); }
 function pauseDeathBringerMusic() { deathbringerMusic.pause(); }
 
 function playRain() { rainPlay.play(); }
-function pauseRain() { rainPlay.play(); }
+function pauseRain() { rainPlay.pause(); }
 
 function playWind() { windPlay.play(); }
 
