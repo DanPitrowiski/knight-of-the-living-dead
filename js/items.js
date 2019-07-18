@@ -25,7 +25,7 @@ $('.item-button').click( function(){
 	if (item === "skillspotion"){
 		hero.skillPointsCurrent = hero.skillPoints;
 		hero.skillspotion -= 1;
-		message = ( hero.name + "'s skillpoints were restored to full.");
+		message = ( hero.name + "'s mana was restored to full.");
 	}
 
 	$('.editHealthPotion').html(hero.healthpotion);
