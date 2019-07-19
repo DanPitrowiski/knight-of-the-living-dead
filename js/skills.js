@@ -8,11 +8,11 @@ var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup",
 		name: "Finish Him",
 		statAdj: 10,
 		skillpointCost: 4,
-		turns: 7,
+		turns: 8,
 		turnsCount: 0,
 		uid: "finishhim",
 		heroOwns: true,
-		effectDescription: "+10 dmg 7 turns",
+		effectDescription: "+10 dmg 8 turns",
 		adjHero: function (){
 			hero.weapon[1] += finishhim.statAdj;
 			console.log("Working finish him");
@@ -134,6 +134,7 @@ var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup",
 			currentEnemies[0].dodge = misfortune.statAdj;
 			},
 	};
+
 
 	var berserk = {
 		name: "Enrage",

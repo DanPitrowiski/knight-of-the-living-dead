@@ -1004,8 +1004,8 @@ strong {
 }
 
 @keyframes cloud-flight {
-  0% { left: -5%;}
-  100% {left: 105%;}
+  0% { left: -40%;}
+  100% {left: 100%;}
 }
 
 @keyframes flying {
@@ -1020,6 +1020,16 @@ strong {
   80% { top: 30%; }
   90% { top: 35%; }
   100% { left: 105%; top: 30%;}
+}
+
+@keyframes flying-in-place {
+  0% { -webkit-transform: translateY(-8px) }
+  50% { -webkit-transform: translateY(5px) }
+  100% { -webkit-transform: translateY(-8px) }
+}
+
+.flying-in-place {
+  -webkit-animation: flying-in-place 3s linear infinite;
 }
 
 .flying {

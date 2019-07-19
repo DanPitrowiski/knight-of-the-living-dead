@@ -151,7 +151,7 @@ var dragon = {
     skills:['Bite Head Off','Fire Breath'],
     ui_id: "#enemy-ui-one",
     img_id: "#dragon",
-    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="ememies flying" src="images/dragon.png">');},
+    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="ememies flying-in-place" src="images/dragon.png">');},
 };
 
 var theking = {
