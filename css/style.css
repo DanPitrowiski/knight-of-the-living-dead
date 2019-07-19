@@ -1004,8 +1004,13 @@ strong {
 }
 
 @keyframes cloud-flight {
+<<<<<<< HEAD
   0% { left: -40%;}
   100% {left: 100%;}
+=======
+  0% { left: -5%;}
+  100% {left: 105%;}
+>>>>>>> Health_and_mana_bar
 }
 
 @keyframes flying {
@@ -1020,6 +1025,7 @@ strong {
   80% { top: 30%; }
   90% { top: 35%; }
   100% { left: 105%; top: 30%;}
+<<<<<<< HEAD
 }
 
 @keyframes flying-in-place {
@@ -1030,6 +1036,8 @@ strong {
 
 .flying-in-place {
   -webkit-animation: flying-in-place 3s linear infinite;
+=======
+>>>>>>> Health_and_mana_bar
 }
 
 .flying {
