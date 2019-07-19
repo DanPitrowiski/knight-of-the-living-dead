@@ -570,6 +570,10 @@ div #skills-menu, div #items-menu {
   background-color: rgba(74,144,226,.8);
 }
 
+.skill-button:hover {
+  background-color: rgba(42,111,192,.8);
+}
+
 .item-button {
   background-color: rgba(245,166,35,.8);
 }
@@ -597,15 +601,27 @@ button {
   display: block;
 }
 
+.attack-f:hover {
+  background-color: rgba(103,167,31,1);
+}
+
 .skill-f {
   background-color: rgba(74,144,226,1);
   margin-bottom: 5px;
   display: block;
 }
 
+.skill-f:hover {
+  background-color: rgba(56,126,208,1);
+}
+
 .item-f {
   background-color: rgba(245,166,35,1);
   display: block;
+}
+
+.item-f:hover, .item-button:hover {
+  background-color: rgba(210,135,9,1);
 }
 
 .turnoffbuttons {
@@ -804,6 +820,11 @@ strong {
   clear: both;
 }
 
+.next-choose-adj:hover {
+  transition: background-color 0.5s ease;
+  background-color: rgba(96, 155, 31, 1);
+}
+
 #level-up {
   width: 908px;
   height: 450px;
@@ -894,20 +915,40 @@ strong {
   background-color: rgba(126,191,54,1);
 }
 
+#attackLevel:hover {
+  background-color: rgba(104,167,34,1);
+}
+
 #armorLevel {
   background-color: rgba(166,166,166,1);
+}
+
+#armorLevel:hover {
+  background-color: rgba(133,133,133,1);
 }
 
 #accuracyLevel {
   background-color: rgba(236,149,50,1);
 }
 
+#accuracyLevel:hover {
+background-color: rgba(210,135,9,1);
+}
+
 #skillsLevel {
   background-color: rgba(111,170,233,1);
 }
 
+#skillsLevel:hover {
+  background-color: rgba(69,129,194,1);
+}
+
 #dodgeLevel {
   background-color: rgba(239,108,89,1);
+}
+
+#dodgeLevel:hover {
+  background-color: rgba(216,89,70,1);
 }
 
 /******************************************

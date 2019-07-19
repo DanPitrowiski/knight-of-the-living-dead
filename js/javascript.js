@@ -398,6 +398,11 @@ function enemyKilled(defender){
 		$('#misfortune').css('display','inherit');
 		misfortune.turnsCount = 0;
 	};
+	if(eyespit.turnsCount > 0){
+		eyespit.negHero();
+		$('#eyespit').css('display','inherit');
+		misfortune.turnsCount = 0;
+	};
 	$('#enemy-ui-one').fadeOut(2000);
 	$('#enemyone').fadeOut(3000);
 	$('#items-menu').hide();
