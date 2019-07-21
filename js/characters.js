@@ -37,7 +37,7 @@ var zombieBob = {
     skills:['Bite','Skewer!'],
     ui_id: "#enemy-ui-one",
     img_id: "#zombieBob",
-    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="ememies" src="images/zombie-farmer.png">');},
+    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="enemies" src="images/zombie-farmer.png">');},
 };
 
 var mountainGiant = {
@@ -56,7 +56,7 @@ var mountainGiant = {
     skills:['Crush','Pound'],
     ui_id: "#enemy-ui-one",
     img_id: "#mountainGiant",
-    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="ememies" src="images/rock-monster.png">');},
+    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="enemies" src="images/rock-monster.png">');},
 };
 
 var ogre = {
@@ -75,7 +75,26 @@ var ogre = {
     skills:['Keel!','Destoyah!'],
     ui_id: "#enemy-ui-one",
     img_id: "#ogre",
-    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="ememies" src="images/ogre.png">');},
+    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="enemies" src="images/ogre.png">');},
+};
+
+var viking = {
+    name:"Bjørn the Bear",
+    uid: "viking",
+    level:7,
+    type:"Loves to raid, raids to love",
+    accuracy: 70,
+    dodge: 10,
+    armor: 2,
+    weapon: ['My Big Friend', 5, 15],
+    skillPointsCurrent:4,
+    skillPoints:4,
+    hitPointsCurrent:40,
+    hitPoints:40,
+    skills:[],
+    ui_id: "#enemy-ui-one",
+    img_id: "#viking",
+    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="enemies src="images/viking.png">');},
 };
 
 var dungeonGuard = {
@@ -94,7 +113,7 @@ var dungeonGuard = {
     skills:['Peel','Carve'],
     ui_id: "#enemy-ui-one",
     img_id: "#dungeonGuard",
-    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="ememies" src="images/dungeon-guard.png">');},
+    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="enemies" src="images/dungeon-guard.png">');},
 };
 
 var berserker = {
@@ -113,7 +132,7 @@ var berserker = {
     skills:['Chop','Raging'],
     ui_id: "#enemy-ui-one",
     img_id: "#berserker",
-    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="ememies" src="images/berserker.png">');},
+    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="enemies" src="images/berserker.png">');},
 };
 
 var castleGuard = {
@@ -132,7 +151,7 @@ var castleGuard = {
     skills:['Violent Strike','Face-off'],
     ui_id: "#enemy-ui-one",
     img_id: "#castleGuard",
-    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="ememies" src="images/castle-guard.png">');},
+    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="enemies" src="images/castle-guard.png">');},
 };
 
 var dragon = {
@@ -151,7 +170,7 @@ var dragon = {
     skills:['Bite Head Off','Fire Breath'],
     ui_id: "#enemy-ui-one",
     img_id: "#dragon",
-    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="ememies flying-in-place" src="images/dragon.png">');},
+    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="enemies flying-in-place" src="images/dragon.png">');},
 };
 
 var theking = {
@@ -170,5 +189,5 @@ var theking = {
     skills:['Cleave','Accurate Strike'],
     ui_id: "#enemy-ui-one",
     img_id: "#theking",
-    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="ememies" src="images/theking.png">');},
+    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="enemies" src="images/theking.png">');},
 };
