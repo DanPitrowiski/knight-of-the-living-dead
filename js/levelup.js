@@ -3,14 +3,14 @@ var levelUpOptions = ['attackLevel', 'armorLevel','skillsLevel','dodgeLevel','ac
 
 	var attackLevel = {
 	level1: ['Bone Saw', 10, 15],
-	level2: ['Death Seeker', 13, 18],
-	level3: ['Bone Scythe', 15, 23],
-	level4: ['Harbinger', 16, 30],
-	level5: ['Repentance', 25, 30],
+	level2: ['Death Seeker', 14, 18],
+	level3: ['Bone Scythe', 15, 24],
+	level4: ['Harbinger', 20, 26],
+	level5: ['Repentance', 23, 30],
 	level6: ['Devilish Dire', 6, 66],
-	level7: ['Deaths Blow', 30, 36],
+	level7: ['Deaths Blow', 30, 40],
 	level8: ['Exacto Knife', 40, 40],
-	level9: ['Bone Saw lvl 2', 40, 52],
+	level9: ['Diablos Incarnation', 50, 60],
 	nextLevel: ["level1", 1],
 	currentLevel: 1,
 	maxLevel: 4,
@@ -91,7 +91,7 @@ function levelUp() {
 	$( ".insert-lvl").html(hero.level);
 
 	// Give Random Hitpoint Bonus
-	var addHitPoints = Math.floor((Math.random() * 5) + 1);
+	var addHitPoints = Math.floor((Math.random() * 6) + 1);
     hero.hitPointsCurrent += addHitPoints;
     hero.hitPoints += addHitPoints;
     $('.editHitPoints').html(addHitPoints);
