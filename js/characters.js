@@ -17,8 +17,8 @@ var hero = {
     hitPoints:35,
     skills:['Keen eye','Enrage','Spit in their eye!'],
     ui_id: "#hero-ui",
-    healthpotion: 6,
-    skillspotion: 4,
+    healthpotion: 2,
+    skillspotion: 2,
 };
 
 var zombieBob = {

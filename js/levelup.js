@@ -1,5 +1,5 @@
 var turnzero = 0;
-var levelUpOptions = ['attackLevel', 'armorLevel','skillsLevel','dodgeLevel','accuracyLevel'];
+var levelUpOptions = ['attackLevel', 'armorLevel','skillsLevel','dodgeLevel','accuracyLevel','healthBoost'];
 
 	var attackLevel = {
 	level1: ['Bone Saw', 10, 15],
@@ -82,6 +82,22 @@ var levelUpOptions = ['attackLevel', 'armorLevel','skillsLevel','dodgeLevel','ac
 	img: "images/icons/dodge.png",
 	}
 
+	var healthBoost = {
+	level1: 8,
+	level2: 9,
+	level3: 10,
+	level4: 12,
+	level5: 14,
+	level6: 16,
+	level7: 19,
+	level8: 23,
+	level9: 26,
+	level10: 30,
+	nextLevel: ["level1", 1],
+	maxLevel: 10,
+	img: "images/icons/health.png",
+	}
+
 function levelUp() {
 	$( "#popover" ).addClass("popover-bg-opaque");
 	$( "#level-up" ).fadeIn(2000);
@@ -91,7 +107,7 @@ function levelUp() {
 	$( ".insert-lvl").html(hero.level);
 
 	// Give Random Hitpoint Bonus
-	var addHitPoints = Math.floor((Math.random() * 6) + 1);
+	var addHitPoints = Math.floor((Math.random() * 5) + 1);
     hero.hitPointsCurrent += addHitPoints;
     hero.hitPoints += addHitPoints;
     $('.editHitPoints').html(addHitPoints);
@@ -153,6 +169,14 @@ function levelUp() {
 							  '<p>Upgrade your dodge level from '+ hero.dodgeSaved + '% to '+dodgeLevel[upgradeTo]+ '%.</p><button class="levelup-button center" id="dodgeLevel">CHOOSE UPGRADE</button></div>');
 	}
 
+	if (( levelUpOptions[0] === "healthBoost") || ( levelUpOptions[1] === "healthBoost") || ( levelUpOptions[2] === "healthBoost")) {
+		// level = attackLevel.currentLevel += 1;
+		upgradeTo = healthBoost.nextLevel[0];
+		var newTotal = hero.hitPoints + healthBoost[upgradeTo];
+		$('#level-up').append('<div class="levelup-option border-healthBoost">'+'<div class="img-bg"><img class="center skill-img" src='+healthBoost.img+'></div><h1>EXTRA HEALTH</h1></br>'+
+							  '<p>Increase your health by ' + healthBoost[upgradeTo] + ' (up to '+ newTotal + ') and heal to full.</p><button class="levelup-button center" id="healthBoost">CHOOSE UPGRADE</button></div>');
+	}
+
 
 	$('.levelup-button').click( function(){
 
@@ -207,6 +231,14 @@ function levelUp() {
 			$('#'+skillsLevel[upgradeTo]).css('display','inherit');
 			skillsLevel.nextLevel[1] += 1;
 			skillsLevel.nextLevel[0] = "level" + skillsLevel.nextLevel[1];
+		}
+
+		if (upgrade === "healthBoost"){
+			upgradeTo = healthBoost.nextLevel[0];
+			hero.hitPoints = hero.hitPoints + healthBoost[upgradeTo];
+			hero.hitPointsCurrent = hero.hitPoints;
+			healthBoost.nextLevel[1] += 1;
+			healthBoost.nextLevel[0] = "level" + healthBoost.nextLevel[1];
 		}
 
 		console.log("Level up - player turn = "+ playerTurn);

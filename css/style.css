@@ -872,23 +872,27 @@ strong {
 }
 
 .border-attacklevel {
-    border: 5px solid rgba(126,191,54,1);
+  border: 5px solid rgba(126,191,54,1);
 }
 
 .border-armorlevel {
     border: 5px solid rgba(166,166,166,1);
 }
 
+.border-healthBoost {
+  border: 5px solid rgba(185,30,30,1);
+}
+
 .border-accuracylevel {
-    border: 5px solid rgba(236,149,50,1);
+  border: 5px solid rgba(236,149,50,1);
 }
 
 .border-skillslevel {
-    border: 5px solid rgba(111,170,233,1);
+  border: 5px solid rgba(111,170,233,1);
 }
 
 .border-dodgelevel {
-    border: 5px solid rgba(239,108,89,1);
+  border: 5px solid rgba(239,108,89,1);
 }
 
 .img-bg {
@@ -954,6 +958,14 @@ background-color: rgba(210,135,9,1);
 
 #dodgeLevel:hover {
   background-color: rgba(216,89,70,1);
+}
+
+#healthBoost {
+  background-color: rgba(185,30,30,1);
+}
+
+#healthBoost:hover {
+  background-color: rgba(160,20,20,1);
 }
 
 /******************************************
