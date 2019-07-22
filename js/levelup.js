@@ -197,6 +197,8 @@ function levelUp() {
 			hero.weaponSaved[2] = attackLevel[upgradeTo][2];
 			attackLevel.nextLevel[1] += 1;
 			attackLevel.nextLevel[0] = "level" + attackLevel.nextLevel[1];
+
+			alertMessage("You've upgraded your weapon",null, null);
 		}
 
 		if (upgrade === "armorLevel"){
@@ -206,6 +208,8 @@ function levelUp() {
 			hero.armorSaved = armorLevel[upgradeTo];
 			armorLevel.nextLevel[1] += 1;
 			armorLevel.nextLevel[0] = "level" + armorLevel.nextLevel[1];
+
+			alertMessage("You've upgraded your armor plating",null, null);
 		}
 
 		if (upgrade === "accuracyLevel"){
@@ -215,6 +219,8 @@ function levelUp() {
 			hero.accuracySaved = accuracyLevel[upgradeTo];
 			accuracyLevel.nextLevel[1] += 1;
 			accuracyLevel.nextLevel[0] = "level" + accuracyLevel.nextLevel[1];
+
+			alertMessage("You've upgraded your accuracy",null, null);
 		}
 
 		if (upgrade === "dodgeLevel"){
@@ -224,6 +230,8 @@ function levelUp() {
 			hero.dodgeSaved = dodgeLevel[upgradeTo];
 			dodgeLevel.nextLevel[1] += 1;
 			dodgeLevel.nextLevel[0] = "level" + dodgeLevel.nextLevel[1];
+
+			alertMessage("You've upgraded your dodge skill",null, null);
 		}
 
 		if (upgrade === "skillsLevel"){
@@ -233,6 +241,8 @@ function levelUp() {
 			skillsLevel.nextLevel[0] = "level" + skillsLevel.nextLevel[1];
 			hero.skillPoints+=5;
 			hero.skillPointsCurrent+=5;
+
+			alertMessage("You've added a new skill and gained 5 mana points",null, null);
 		}
 
 		if (upgrade === "healthBoost"){
@@ -241,6 +251,8 @@ function levelUp() {
 			hero.hitPointsCurrent = hero.hitPoints;
 			healthBoost.nextLevel[1] += 1;
 			healthBoost.nextLevel[0] = "level" + healthBoost.nextLevel[1];
+
+			alertMessage("You've gain health and been fully healed",null, null);
 		}
 
 		console.log("Level up - player turn = "+ playerTurn);
