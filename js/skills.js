@@ -213,12 +213,12 @@ $('.skill-button').click( function(){
 	}
 	console.log("Skills page - player turn = "+ playerTurn);
 
-	$('.alert-button').addClass('enemyturn');
-	$('.fight-button').addClass('turnoffbuttons');
-	$('.item-button').addClass('turnoffbuttons');
-	$('.skill-button').addClass('turnoffbuttons');
+	// $('.alert-button').addClass('enemyturn');
+	// $('.fight-button').addClass('turnoffbuttons');
+	// $('.item-button').addClass('turnoffbuttons');
+	// $('.skill-button').addClass('turnoffbuttons');
 
-	eval(heroskill).turnsCount = eval(heroskill).turns;
+	// eval(heroskill).turnsCount = eval(heroskill).turns;
 	hero.skillPointsCurrent -= eval(heroskill).skillpointCost;
 
 	eval(heroskill).adjHero();
@@ -231,11 +231,11 @@ $('.skill-button').click( function(){
 	alertMessage(message, null, false);
 
 	playSkillActivated();
-	endTurn();
+	// endTurn();
 	setFightInfo();
 
 	setTimeout(function(){
-		enemyAttack();
+		// enemyAttack();
 	},1700);
 
 });
