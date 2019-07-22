@@ -109,6 +109,7 @@ function levelUp() {
 
 	var level;
 	console.log(levelUpOptions);
+	console.log("Counting the levels:" + level);
 
 	if (( levelUpOptions[0] === "attackLevel") || ( levelUpOptions[1] === "attackLevel") || ( levelUpOptions[2] === "attackLevel")) {
 		// level = attackLevel.currentLevel += 1;

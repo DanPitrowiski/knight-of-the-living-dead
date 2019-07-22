@@ -81,7 +81,7 @@ var ogre = {
 var viking = {
     name:"Bjørn the Bear",
     uid: "viking",
-    level:7,
+    level:3,
     type:"Loves to raid, raids to love",
     accuracy: 70,
     dodge: 10,
@@ -94,7 +94,7 @@ var viking = {
     skills:[],
     ui_id: "#enemy-ui-one",
     img_id: "#viking",
-    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="enemies src="images/viking.png">');},
+    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="enemies" src="images/viking.png">');},
 };
 
 var dungeonGuard = {

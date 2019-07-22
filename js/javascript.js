@@ -1,6 +1,7 @@
  var message;
  var playerTurn = true;
  var enemyList = [zombieBob, ogre, viking, berserker, dungeonGuard, mountainGiant, castleGuard, theking, dragon];
+ var gameLength = enemyList.length;
  var currentEnemies = [zombieBob];
  var myDiv = document.getElementById("div-history");
  var skipEnemy;
@@ -23,6 +24,7 @@ $('#thanks').on('click', function(event){
 // ******************************************
 
  $( document ).ready(function() {
+ 	$('.editEnemiesCounter').html((enemyList.length-2));
  	var text_input = $('#hero-name');
   	text_input.focus();
   	setFightInfo();
@@ -422,7 +424,6 @@ function enemyKilled(defender){
 
 $('.nextEnemy,#nextEnemy').click( function(){
 	// CSS changes and fades
-	$('#game-container').addClass('darker-game-bg');
 
 	$( "#nextEnemy").css('display','none');
 	$('.fight-button').removeClass('turnoffbuttons');
@@ -451,13 +452,14 @@ $('.nextEnemy,#nextEnemy').click( function(){
 	playerTurn=true;
 
 	// Setting How Many Enemies Before King
-	if (roundCounter < 7){
-		var count = (6 - roundCounter);
-		$('.editEnemiesCounter').html(count)
+	if (roundCounter === (gameLength-3)){
+		$('.enemiescount').html("The King is next!");
+	}else if (roundCounter < (gameLength-2)){
+		$('.editEnemiesCounter').html((gameLength - 2)-roundCounter);
 	} else{
 		$('.enemiescount').fadeOut();
 	}
-	if (roundCounter === 8){
+	if (roundCounter === (gameLength-1)){
 		$('.turns-alerts').remove();
 		$('.deathbringer-bg').css('display','none');
 		alertMessage("Even kings bow before me puny creature!", null, false);

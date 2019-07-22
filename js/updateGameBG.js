@@ -4,24 +4,24 @@ function updateGameBG(){
 
 roundCounter++;
 
-	if (roundCounter === 2){
-
+	if (roundCounter === (gameLength-6)){
 	};
 
-  if (roundCounter === 3){
+  if (roundCounter === (gameLength-5)){
     $('#game-container').addClass('darker-game-bg');
   };
 
-	if (roundCounter === 4){
+	if (roundCounter === (gameLength-4)){
 		$('.large-grey-cloud').css('display','inherit');
 	};
 
-	if (roundCounter === 5){
+	if (roundCounter === (gameLength-3)){
 		$('.large-grey-cloud2').css('display','inherit');
 		$('canvas').css('display','inherit');
 		playRain();
     gameMusic.volume = 0.7;
 	};
+
 	if (roundCounter === 6){
 		$('#game-container').addClass('twilight-game-bg');
 		playWind();
@@ -30,7 +30,7 @@ roundCounter++;
     rain_chance = .5;
 	};
 
-	if (roundCounter === 7){
+	if (roundCounter === (gameLength-2)){
 		pauseRain();
 		pauseAudio();
 		playEpicMusic();
@@ -42,7 +42,7 @@ roundCounter++;
     $('.large-grey-cloud3').css('display','inherit');
 	};
 
-	if (roundCounter === 8){
+	if (roundCounter === (gameLength-1)){
     $('#thunder').addClass('thunder');
 
     // Bring Deathbringer infron of Mountains and Thunder
@@ -62,11 +62,11 @@ roundCounter++;
     rain_chance = 1;
 	};
 
-	if (roundCounter === 9){
+	if (roundCounter === gameLength){
 		winner();
 	};
 
-}
+};
 
 var rain = [], drops = [];
 
