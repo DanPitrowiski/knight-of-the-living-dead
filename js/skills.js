@@ -7,7 +7,7 @@ var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup",
 	var finishhim = {
 		name: "Finish Him",
 		statAdj: 10,
-		skillpointCost: 4,
+		skillpointCost: 6,
 		turns: 8,
 		turnsCount: 0,
 		uid: "finishhim",
@@ -25,7 +25,7 @@ var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup",
 	var lightonyourfeet = {
 		name: "Light on your feet",
 		statAdj: 30,
-		skillpointCost: 3,
+		skillpointCost: 10,
 		turns: 10,
 		turnsCount: 0,
 		uid: "lightonyourfeet",
@@ -39,13 +39,13 @@ var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup",
 
 	var armorup = {
 		name: "Armor up",
-		statAdj: 4,
+		statAdj: 5,
 		skillpointCost: 5,
 		turns: 12,
 		turnsCount: 0,
 		uid: "armorup",
 		heroOwns: true,
-		effectDescription: "+4 armor for 12 turns",
+		effectDescription: "+5 armor for 12 turns",
 		adjHero: function (){
 			hero.armor += armorup.statAdj; },
 		negHero: function (){
@@ -55,7 +55,7 @@ var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup",
 	var keeneye = {
 		name: "Keen eye",
 		statAdj: 15,
-		skillpointCost: 2,
+		skillpointCost: 3,
 		turns: 10,
 		turnsCount: 0,
 		uid: "keeneye",
@@ -70,12 +70,12 @@ var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup",
 	var execute = {
 		name: "Execute",
 		statAdj: 30,
-		skillpointCost: 3,
-		turns: 3,
+		skillpointCost: 10,
+		turns: 2,
 		turnsCount: 0,
 		uid: "execute",
 		heroOwns: false,
-		effectDescription: "+30 damage for 3 turns",
+		effectDescription: "+40 damage for 3 turns",
 		adjHero: function (){
 			hero.weapon[1] += execute.statAdj;
 			hero.weapon[2] += execute.statAdj;} ,
@@ -88,15 +88,18 @@ var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup",
 		name: "More Potions",
 		statAdj: 2,
 		skillpointCost: 6,
-		turns: 0,
+		turns: 5,
 		turnsCount: 0,
 		uid: "morepotions",
 		heroOwns: false,
-		effectDescription: "+2 Mana & +2 Health potions",
+		effectDescription: "+1 Mana & +1 Health potions (Cooldown 5 turns)",
 		adjHero: function (){
-			hero.healthpotion += 2;
-			hero.skillspotion += 2;} ,
-		negHero: function (){},
+			hero.healthpotion += 1;
+			hero.skillspotion += 1;
+			$('#morepotions').css('display','none');} ,
+		negHero: function (){
+			$('#morepotions').css('display','inherit');
+		},
 	};
 
 	var extralife = {
@@ -121,7 +124,7 @@ var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup",
 	var misfortune = {
 		name: "Misfortune",
 		statAdj: 0,
-		skillpointCost: 2,
+		skillpointCost: 4,
 		turns: 8,
 		turnsCount: 0,
 		uid: "misfortune",
@@ -138,12 +141,12 @@ var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup",
 	var eyespit = {
 		name: "Spit in their eye!",
 		statAdj: 0,
-		skillpointCost: 2,
+		skillpointCost: 4,
 		turns: 6,
 		turnsCount: 0,
 		uid: "eyespit",
 		heroOwns: false,
-		effectDescription: "50% enemy accuracy for 6 turns",
+		effectDescription: "50% enemy accuracy for 5 turns",
 		adjHero: function (){
 			eyespit.statAdj = currentEnemies[0].accuracy;
 			currentEnemies[0].accuracy = Math.round(currentEnemies[0].accuracy / 2);} ,
@@ -159,7 +162,7 @@ var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup",
 		turns: 0,
 		turnsCount: 0,
 		uid: "fullrecovery",
-		heroOwns: true,
+		heroOwns: false,
 		effectDescription: "Fully heal yourself and regain half your mana",
 		adjHero: function (){
 			   hero.hitPointsCurrent = hero.hitPoints;
@@ -176,18 +179,18 @@ var skillList = ["finishhim","berserk","misfortune","lightonyourfeet","armorup",
 		turnsCount: 0,
 		uid: "berserk",
 		heroOwns: true,
-		effectDescription: "Everytime you're hit, you deal +3 more dmg (effects last 20 turns)",
+		effectDescription: "Everytime you're hit, you deal +2 more dmg (effects last 20 turns)",
 		adjHero: function (){
 			if (berserk.statAdj > 0){
-				hero.weapon[1] += 3;
-				hero.weapon[2] += 3;
+				hero.weapon[1] += 2;
+				hero.weapon[2] += 2;
 				setCharacterStats();
 			}
 			berserk.statAdj +=1;
 		},
 		negHero: function (){
-			hero.weapon[1] -= ((berserk.statAdj-1) * 3);
-			hero.weapon[2] -= ((berserk.statAdj-1) * 3);
+			hero.weapon[1] -= ((berserk.statAdj-1) * 2);
+			hero.weapon[2] -= ((berserk.statAdj-1) * 2);
 			berserk.statAdj = 0;
 		},
 
@@ -218,7 +221,7 @@ $('.skill-button').click( function(){
 	// $('.item-button').addClass('turnoffbuttons');
 	// $('.skill-button').addClass('turnoffbuttons');
 
-	// eval(heroskill).turnsCount = eval(heroskill).turns;
+	eval(heroskill).turnsCount = eval(heroskill).turns;
 	hero.skillPointsCurrent -= eval(heroskill).skillpointCost;
 
 	eval(heroskill).adjHero();

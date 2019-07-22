@@ -8,8 +8,13 @@ $( '#hero-ui,#hero-stats' ).hover(
 			"<span class='statnum'>" + hero.accuracy + "%</span> ACCURACY </br>" + 
 			"<span class='statnum'>" + hero.dodge + "%</span> DODGE </br>" +
 			"<span class='statnum'>" + hero.armor + "</span> ARMOR </br>" + 
-			"<span class='statnum'>" + hero.weapon[0] + "</span> dmg " + hero.weapon[1] + "-" + hero.weapon[2] + "</br>" );
-		$( '.hero-stats').html(heroStats); 
+			"<span class='statnum'>" + hero.weapon[0] + "</span> dmg " + hero.weapon[1] + "-" + hero.weapon[2] );
+		$( '.hero-stats').html(heroStats);
+		if (berserk.statAdj > 1){
+			var totalbonusdamage = (berserk.statAdj-1) * 2;
+			var berserkBonus = ( "</br>( +" + totalbonusdamage + "/+"+ totalbonusdamage + " dmg from Enrage )" );
+			$( '.hero-stats').append(berserkBonus);
+		}
 
 	}, function() {
     	$( '.hero-stats' ).css('display','none');

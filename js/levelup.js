@@ -3,14 +3,14 @@ var levelUpOptions = ['attackLevel', 'armorLevel','skillsLevel','dodgeLevel','ac
 
 	var attackLevel = {
 	level1: ['Bone Saw', 10, 15],
-	level2: ['Death Seeker', 14, 18],
-	level3: ['Bone Scythe', 15, 24],
-	level4: ['Harbinger', 20, 26],
-	level5: ['Repentance', 23, 30],
+	level2: ['Death Seeker', 14, 19],
+	level3: ['Bone Scythe', 16, 25],
+	level4: ['Harbinger', 22, 28],
+	level5: ['Repentance', 29, 30],
 	level6: ['Devilish Dire', 6, 66],
-	level7: ['Deaths Blow', 30, 40],
-	level8: ['Exacto Knife', 40, 40],
-	level9: ['Diablos Incarnation', 50, 60],
+	level7: ['Deaths Blow', 34, 44],
+	level8: ['Exacto Knife', 45, 55],
+	level9: ['Diablos Incarnation', 50, 100],
 	nextLevel: ["level1", 1],
 	currentLevel: 1,
 	maxLevel: 4,
@@ -23,15 +23,15 @@ var levelUpOptions = ['attackLevel', 'armorLevel','skillsLevel','dodgeLevel','ac
 	}
 
 	var armorLevel = {
-	level1: 3,
-	level2: 5,
-	level3: 7,
-	level4: 9,
-	level5: 11,
-	level6: 13,
-	level7: 15,
-	level8: 17,
-	level9: 19,
+	level1: 4,
+	level2: 7,
+	level3: 10,
+	level4: 13,
+	level5: 16,
+	level6: 21,
+	level7: 24,
+	level8: 27,
+	level9: 30,
 	nextLevel: ["level1", 1],
 	maxLevel: 5,
 	img: "images/icons/armor.png",
@@ -57,10 +57,10 @@ var levelUpOptions = ['attackLevel', 'armorLevel','skillsLevel','dodgeLevel','ac
 	level2: 'armorup',
 	level3: 'extralife',
 	level4: 'finishhim',
-	level5: 'morepotions',
+	level5: 'execute',
 	level6: 'lightonyourfeet',
-	level7: 'execute',
-	level8: '',
+	level7: 'morepotions',
+	level8: 'fullrecovery',
 	level9: '',
 	nextLevel: ["level1", 1],
 	maxLevel: 2,
@@ -68,30 +68,30 @@ var levelUpOptions = ['attackLevel', 'armorLevel','skillsLevel','dodgeLevel','ac
 	}
 
 	var dodgeLevel = {
-	level1: 30,
-	level2: 40,
-	level3: 50,
-	level4: 60,
-	level5: 70,
-	level6: 78,
-	level7: 86,
-	level8: 94,
-	level9: 99,
+	level1: 20,
+	level2: 30,
+	level3: 40,
+	level4: 50,
+	level5: 60,
+	level6: 70,
+	level7: 80,
+	level8: 90,
+	level9: 95,
 	nextLevel: ["level1", 1],
 	maxLevel: 5,
 	img: "images/icons/dodge.png",
 	}
 
 	var healthBoost = {
-	level1: 8,
-	level2: 9,
-	level3: 10,
-	level4: 12,
-	level5: 14,
-	level6: 16,
-	level7: 19,
-	level8: 23,
-	level9: 26,
+	level1: 5,
+	level2: 6,
+	level3: 7,
+	level4: 9,
+	level5: 11,
+	level6: 14,
+	level7: 17,
+	level8: 20,
+	level9: 23,
 	level10: 30,
 	nextLevel: ["level1", 1],
 	maxLevel: 10,
@@ -158,7 +158,7 @@ function levelUp() {
 		upgradeTo = skillsLevel.nextLevel[0];
 		console.log(level);
 		$('#level-up').append('<div class="levelup-option border-skillslevel">'+'<div class="img-bg"><img class="center skill-img" src='+skillsLevel.img+'></div><h1>CHOOSE A NEW SKILL</h1></br>'+
-							  '<p>Add the skill '+eval(skillsLevel[upgradeTo]).name + ' - '+eval(skillsLevel[upgradeTo]).effectDescription+'.</p><button class="levelup-button center" id="skillsLevel">CHOOSE UPGRADE</button></div>');
+							  '<p>Add the skill '+eval(skillsLevel[upgradeTo]).name + ' - '+eval(skillsLevel[upgradeTo]).effectDescription+'. Also +5 to your maximum mana.</p><button class="levelup-button center" id="skillsLevel">CHOOSE UPGRADE</button></div>');
 	}
 
 	if (( levelUpOptions[0] === "dodgeLevel") || ( levelUpOptions[1] === "dodgeLevel") || ( levelUpOptions[2] === "dodgeLevel")) {
@@ -231,6 +231,8 @@ function levelUp() {
 			$('#'+skillsLevel[upgradeTo]).css('display','inherit');
 			skillsLevel.nextLevel[1] += 1;
 			skillsLevel.nextLevel[0] = "level" + skillsLevel.nextLevel[1];
+			hero.skillPoints+=5;
+			hero.skillPointsCurrent+=5;
 		}
 
 		if (upgrade === "healthBoost"){
