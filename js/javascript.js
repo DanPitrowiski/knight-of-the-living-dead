@@ -1,6 +1,6 @@
  var message;
  var playerTurn = true;
- var enemyList = [zombieBob, ogre, viking, berserker, dungeonGuard, mountainGiant, castleGuard, theking, dragon];
+ var enemyList = [zombieBob, ogre, viking, berserker, dungeonGuard, mountainGiant, castleGuard, metalOgre, theking, dragon];
  var gameLength = enemyList.length;
  var currentEnemies = [zombieBob];
  var myDiv = document.getElementById("div-history");
@@ -547,7 +547,6 @@ function playEnemyEntrance(enemy){
 	if (enemy.img_id === "#ogre"){
 	var audio = $('#ogre-entrance')[0];
 	}
-	// temporary until better sound
     if (enemy.img_id === "#viking"){
 	var audio = $('#viking-entrance')[0];
 	}
@@ -563,6 +562,9 @@ function playEnemyEntrance(enemy){
 	}
 	if (enemy.img_id === "#castleGuard"){
 	var audio = $('#castleGuard-entrance')[0];
+	}
+    if (enemy.img_id === "#metalOgre"){
+	var audio = $('#metalOgre-entrance')[0];
 	}
 	if (enemy.img_id === "#dungeonGuard"){
 	var audio = $('#dungeonGuard-entrance')[0];

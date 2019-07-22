@@ -515,6 +515,12 @@ h1 {
   bottom: 64px;
 }
 
+#metalOgre {
+  position: relative;
+  bottom: 157px;
+  right: 110px;
+}
+
 #theking {
   position: relative;
   bottom: 12px;

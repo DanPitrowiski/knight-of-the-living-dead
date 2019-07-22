@@ -154,6 +154,25 @@ var castleGuard = {
     img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="enemies" src="images/castle-guard.png">');},
 };
 
+var metalOgre = {
+    name:"Metal Ogre",
+    uid: "metalOgre",
+    level:10,
+    type:"Personal body guard of the king",
+    accuracy: 70,
+    dodge: 20,
+    armor: 6,
+    weapon: ['Big Axe', 20, 40],
+    skillPointsCurrent:4,
+    skillPoints:4,
+    hitPointsCurrent:65,
+    hitPoints:65,
+    skills:['Violent Strike','Face-off'],
+    ui_id: "#enemy-ui-one",
+    img_id: "#metalOgre",
+    img: function(){$("#enemy-ui-one").append('<img id="'+currentEnemies[0].uid+'" class="enemies" src="images/metal-ogre.png">');},
+};
+
 var dragon = {
     name:"Deathbringer",
     uid: "dragon",
@@ -161,8 +180,8 @@ var dragon = {
     type:"Peon crusher",
     accuracy: 90,
     dodge: 30,
-    armor: 7,
-    weapon: ['Dragon Claws', 30, 40],
+    armor: 8,
+    weapon: ['Dragon Claws', 35, 45],
     skillPointsCurrent:4,
     skillPoints:4,
     hitPointsCurrent:120,
@@ -181,7 +200,7 @@ var theking = {
     accuracy: 85,
     dodge: 45,
     armor: 5,
-    weapon: ['Lights Edge', 25, 35],
+    weapon: ['Lights Edge', 30, 35],
     skillPointsCurrent:10,
     skillPoints:10,
     hitPointsCurrent:60,
