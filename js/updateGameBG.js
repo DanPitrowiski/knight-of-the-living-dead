@@ -86,8 +86,8 @@ window.requestAnimFrame =
 
 var canvas = document.getElementById('rain');
 var ctx = canvas.getContext('2d');
-canvas.width = 1100;
-canvas.height = 350;
+canvas.width = window.innerWidth;
+canvas.height = 400;
 
 //--------------------------------------------
 
